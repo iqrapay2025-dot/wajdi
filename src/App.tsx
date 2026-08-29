@@ -267,8 +267,8 @@ function Hero() {
         <div className="absolute right-[38%] top-[60%] w-1.5 h-1.5 rounded-full anim-twinkle" style={{ background: GOLD, animationDelay: '0.5s' }} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
-        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-14 items-center">
+      <div className="max-w-7xl mx-auto px-6 py-12 lg:py-24">
+        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-14 items-center">
 
           {/* Left */}
           <Reveal dir="up">
@@ -293,7 +293,7 @@ function Hero() {
             </div>
 
             {/* Trust row */}
-            <div className="flex flex-wrap items-center gap-6">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
               <div className="flex items-center gap-3">
                 <div className="flex -space-x-2.5">
                   {[GOLD, ACCENT_HOVER, '#5F69DD'].map((c, i) => (
@@ -307,9 +307,9 @@ function Hero() {
                   <Stars />
                 </div>
               </div>
-              <div className="h-8 w-px bg-gray-200" />
+              <div className="hidden sm:block h-8 w-px bg-gray-200" />
               <div><div className="text-xl font-extrabold" style={{ color: GOLD, fontFamily: 'var(--font-sans)' }}><CountUp to={2} suffix="+" /></div><div className="text-xs" style={{ color: MUTED, fontFamily: 'var(--font-sans)' }}>Years Teaching</div></div>
-              <div className="h-8 w-px bg-gray-200" />
+              <div className="hidden sm:block h-8 w-px bg-gray-200" />
               <div><div className="text-xl font-extrabold" style={{ color: GOLD, fontFamily: 'var(--font-sans)' }}><CountUp to={4} /></div><div className="text-xs" style={{ color: MUTED, fontFamily: 'var(--font-sans)' }}>Courses Offered</div></div>
             </div>
           </Reveal>
@@ -609,7 +609,7 @@ function TeacherSection() {
                   </div>
                 ))}
               </div>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 <BtnSolid href={WA_LINK}>Join a Class</BtnSolid>
                 <BtnOutline href={WA_LINK}><i className="fab fa-whatsapp" /> WhatsApp</BtnOutline>
               </div>
@@ -643,7 +643,7 @@ function WhyChooseUs() {
   return (
     <section className="py-20 lg:py-24" style={{ background: '#FAFAFD' }}>
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           {/* Left image */}
           <Reveal>
             <div className="relative">
@@ -651,8 +651,7 @@ function WhyChooseUs() {
                 <img
                   src="https://images.unsplash.com/photo-1627383604317-175d057ea58e?w=800&h=900&fit=crop&auto=format"
                   alt="Islamic calligraphy and learning"
-                  className="img-zoom w-full object-cover"
-                  style={{ height: 440 }}
+                  className="img-zoom w-full object-cover h-64 sm:h-80 lg:h-[440px]"
                 />
               </div>
               {/* Floating label */}
@@ -680,7 +679,7 @@ function WhyChooseUs() {
             <p className="text-base mb-8" style={{ color: MUTED, fontFamily: 'var(--font-sans)' }}>
               Learning that puts your progress first, with patient instruction and personal guidance every step of the way.
             </p>
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               {WHY_ITEMS.map((w, i) => (
                 <Reveal key={w.title} delay={i * 55} dir={i % 3 === 0 ? 'up' : 'zoom'}>
                   <div className="group-hoverable lift-card p-4 rounded-xl bg-white" style={{ border: '1px solid #E7E9FB', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
@@ -1000,7 +999,7 @@ function Footer() {
   return (
     <footer className="pt-14 pb-7" style={{ background: DARK, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
