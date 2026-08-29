@@ -1,0 +1,10 @@
+{
+  "description": "Creates a visually accurate, user-friendly interface replicating the uploaded design to enhance user engagement and streamline interactions.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

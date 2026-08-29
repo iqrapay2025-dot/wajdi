@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-yellow: #5B65DC;
+  --color-yellow-light: #EEEFFD;
+  --color-cream: #FAFAFD;
+  --color-background: #FAFAFD;
+  --color-ink: #122056;
+  --color-body: #122056;
+  --color-muted: #6D7697;
+  --color-pink: #EEEFFD;
+  --color-cyan: #E4E7FB;
+  --color-border-light: #E7E9FB;
+  --color-border-dark: #122056;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: 'Amiri', Georgia, serif;
+}
+
+html { scroll-behavior: smooth; }
+
+html, body, #root { height: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  background: #FAFAFD;
+  color: #122056;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(91,101,220,0.35) transparent;
+}
+*::-webkit-scrollbar { width: 5px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: rgba(91,101,220,0.35); border-radius: 3px; }
+
+/* ─── Animation keyframes ─────────────────────────────────────────────────── */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-16px); }
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(220%); }
+}
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0 rgba(91,101,220,0.45); }
+  70%  { box-shadow: 0 0 0 16px rgba(91,101,220,0); }
+  100% { box-shadow: 0 0 0 0 rgba(91,101,220,0); }
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50%      { opacity: 0.6;  transform: scale(1.15); }
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Animation utility classes ───────────────────────────────────────────── */
+.anim-float       { animation: floatY 6s ease-in-out infinite; }
+.anim-float-slow  { animation: floatY 9s ease-in-out infinite; }
+.anim-bob         { animation: bob 3.5s ease-in-out infinite; }
+.anim-pulse-ring  { animation: pulseRing 2.4s ease-out infinite; }
+.anim-gradient    { background-size: 200% 200%; animation: gradientShift 12s ease infinite; }
+.anim-twinkle     { animation: twinkle 4s ease-in-out infinite; }
+.anim-spin-slow   { animation: spinSlow 22s linear infinite; }
+.anim-fade-in     { animation: fadeSlideUp 0.7s cubic-bezier(.22,1,.36,1) both; }
+
+/* Button shine sweep */
+.btn-shine { position: relative; overflow: hidden; }
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+.btn-shine:hover::after { animation: shimmer 0.8s ease; }
+
+/* Navbar link underline slide */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -5px;
+  width: 100%; height: 2px;
+  border-radius: 2px;
+  background: #5B65DC;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* Generic lift card */
+.lift-card { transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease; }
+.lift-card:hover { transform: translateY(-8px); }
+
+/* Icon pop on parent hover */
+.icon-pop { transition: transform 0.35s cubic-bezier(.34,1.56,.64,1); }
+.group-hoverable:hover .icon-pop,
+.lift-card:hover .icon-pop { transform: scale(1.18) rotate(-6deg); }
+
+/* Feature check pop */
+.check-pop { transition: transform 0.25s ease, color 0.25s ease; }
+.lift-card:hover .check-pop { transform: scale(1.25); }
+
+/* Social bounce */
+.social-bounce { transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), background 0.25s ease, color 0.25s ease; }
+.social-bounce:hover { transform: translateY(-4px); }
+
+/* Moving arrow link */
+.see-more { transition: all 0.3s ease; }
+.see-more:hover { background: #5B65DC !important; color: #fff !important; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(91,101,220,0.3); }
+.see-more i { transition: transform 0.3s ease; }
+.see-more:hover i { transform: translateX(4px); }
+
+/* Tab hover */
+.tab-btn { transition: all 0.25s ease; }
+.tab-btn:not(.tab-active):hover { transform: translateY(-2px); border-color: #5B65DC !important; color: #5B65DC !important; }
+
+/* Floating label bob */
+.label-bob { animation: bob 5s ease-in-out infinite; }
+
+/* Image zoom on group hover */
+.img-zoom { transition: transform 0.6s cubic-bezier(.22,1,.36,1); }
+.group-hoverable:hover .img-zoom,
+.lift-card:hover .img-zoom { transform: scale(1.06); }
